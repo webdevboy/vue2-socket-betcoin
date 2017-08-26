@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  chratosreceivePaymentCoinbase:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs6.10
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 63
+      Role: 'arn:aws:iam::287227090704:role/lambda_basic_execution'
+      Environment:
+        Variables:
+          mongodb: >-
+            AQECAHinM7M3G+qTBKW0IykFOnxyVMu0QhZ887yZTkDHARzLLwAAAK8wgawGCSqGSIb3DQEHBqCBnjCBmwIBADCBlQYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAywpB5qO4yOo2aV60gCARCAaEzt47sYAp6Ex+EqQ+yy6OWnBpaAURfAH2pT4wwcbP6QGlat6ornc+DyEsM89SgNsW07+aMKUpLiqZTfqPACVtaqLvK/TsT2JyIQ27wuIOy21Ph0fi7DDGgGbYZmQTXaq5eA9DbQc9qd

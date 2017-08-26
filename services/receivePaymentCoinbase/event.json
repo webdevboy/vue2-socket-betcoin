@@ -1,0 +1,41 @@
+ {
+	"id": "052b521a-ecab-584a-b6dd-c1c03e61ab6c",
+	"type": "wallet:addresses:new-payment",
+	"data": {
+		"id": "ffe1237b-94e6-4ef9-990f-52175c56c82c ",
+		"address": "16L9tzRGKApyASZi6kzxR4TL9wtgT5Q4nv",
+		"name": "ffe1237b-94e6-4ef9-990f-52175c56c82c",
+		"created_at": "2017-01-29T19:14:11Z",
+		"updated_at": "2017-01-29T19:14:11Z",
+		"network": "bitcoin",
+		"resource": "address",
+		"resource_path": "/v2/accounts/52d01724-a651-58d0-809a-80a077ac6a17/addresses/f8014c18-b066-54cf-aa66-52a8deea969d"
+	},
+	"user": {
+		"id": "645823de-b47c-582e-b238-aa0d95b42dc9",
+		"resource": "user",
+		"resource_path": "/v2/users/645823de-b47c-582e-b238-aa0d95b42dc9"
+	},
+	"account": {
+		"id": "52d01724-a651-58d0-809a-80a077ac6a17",
+		"resource": "account",
+		"resource_path": "/v2/accounts/52d01724-a651-58d0-809a-80a077ac6a17"
+	},
+	"delivery_attempts": 1,
+	"created_at": "2017-01-29T20:31:03Z",
+	"resource": "notification",
+	"resource_path": "/v2/notifications/052b521a-ecab-584a-b6dd-c1c03e61ab6c",
+	"additional_data": {
+		"hash": "086ff27e08a81f2b830f681c22d07c365ac3e5e2a04bd5e50fc0d77f42fdd135",
+		"amount": {
+			"amount": "0.00010000",
+			"currency": "BTC"
+		},
+		"transaction": {
+			"id": "b00a9102-d6b8-5652-8ffe-b1fc3316e4a2",
+			"resource": "transaction",
+			"resource_path": "/v2/accounts/52d01724-a651-58d0-809a-80a077ac6a17/transactions/b00a9102-d6b8-5652-8ffe-b1fc3316e4a2"
+		}
+	}
+}
+

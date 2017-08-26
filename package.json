@@ -1,0 +1,36 @@
+{
+  "name": "chratos-mining",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "authenticator": "^1.1.2",
+    "aws-sdk": "^2.32.0",
+    "bitcoin": "^3.0.1",
+    "body-parser": "^1.17.1",
+    "coinbase": "^2.0.6",
+    "connect-redis": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.1",
+    "express-socket.io-session": "^1.3.2",
+    "mongoose": "^4.9.1",
+    "node-uuid": "^1.4.8",
+    "node.bittrex.api": "https://github.com/KaptainKrayola/node.bittrex.api",
+    "nodemailer": "^4.0.1",
+    "nodemailer-ses-transport": "^1.5.1",
+    "prohashing": "^1.0.1",
+    "redis": "^2.7.1",
+    "slack-invite": "^1.1.0",
+    "socket.io": "^1.7.3",
+    "socketio-wildcard": "^0.4.0",
+    "winston": "^2.3.1",
+    "ws": "^2.2.3"
+  }
+}

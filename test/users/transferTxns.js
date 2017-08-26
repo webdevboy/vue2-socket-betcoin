@@ -1,0 +1,56 @@
+const async = require("async")
+const configLocal = require("../../config/local.js");
+const configProd = require("../../config/prod.js");
+
+const mongo = MongoClient = require('mongodb').MongoClient
+var mLocal, mProd;
+
+MongoClient.connect(configLocal.mongodb.url, function (err, db) {
+	if (err) console.log(err)
+	console.log("connected to dev")
+	mLocal = db
+	MongoClient.connect(configProd.mongodb.url, function (err, pdb) {
+		if (err) console.log(err)
+		console.log("connected to prod")
+		mProd = pdb
+
+		/*
+		590f3acaab3d8a178f82a0d1
+		{ _id: 5908beb822ab631874b5e2be,
+			userID: 5908ae94631bf155f972544c,
+			netAmountSatoshi: 1810180387692,
+			convertedCurrency: 'NLG',
+			convertedAmount: 1810180387692,
+			currency: 'NLG',
+			transactionID: '7ff921a7826d948081c0d7f6429a1e00eefa2034afca4df27d343ad5890bbe8a',
+			meta:
+			{ hex: '0100000007f3ea43b8501d047f23c488339f5c959d1610b215801bbe671aee616345f769e9000000006a4730440220057e0e6b37127283d5baeb6aa61a17961ed038feaef16a622a804f9cd3bafdd20220755bb7f3cc9b058e27312592c0cd6eb9ad6b9979c1659be63117a4024b04218f0121023fe04324a02229e7f613b25246b53cc6640dbfcca18b2de784b8a4e61c8cb55efeffffff55ef3a64e59c7c5902ea29cf0227e614c1f8f26108ad87815ee67795b3b62128000000006b483045022100ff047af4e9fba350a1004aab31afd4ff7ed5f45564abfe5880e1325a284a90230220318e827963054e52d63556767d3b36447ff9043a517d7fcb6a9ac337a905547a012103ae94b042e7692771d0a7ee67f939b3591b1f5f19285d2c36c81aa27af84fb7b4fefffffffe7f253487fd1e493213032aad84420117e1f7fef71bc5aae8c387c9bd8bd156000000006b483045022100d4ec06aab4e4d0cb2a6d90f88a9b8de16b023d88977a34f99c0be9804006245202201ab8518ce5adf7072fd6c23305e9379692ffab3c11d7718aad320f4cde12882c012103ae94b042e7692771d0a7ee67f939b3591b1f5f19285d2c36c81aa27af84fb7b4feffffff68895fed23c26ce82fdb3bb0c88fc11cb29fe30bd27ac6fa03be561055272e94010000006b48304502210085467f56ea6a2785efa094cfadcf9c5566ec84596a827ba6ffff342c3b0c9ad2022053c1b87e1774e67debfa64bb7b472fc4f9c830f5d301a59c99dd4985c9141d5801210271854a1af6ed2e33f11299dbacd31f30ecca5fdbaefdd580c25b13e47114e17efeffffff3d557109b9e13998eae1790c353d2ed98afd3950517d65d0d3c47833c779a081000000006a47304402200b99d19fa9b63c07dc919bac4a775d139b57be8c626aa8abeffd39da46302d7e022051e27153f5558deda8bb682a644ffd1bcfd27a9217ef597a3bc96da0fa8f27da0121037af108a415fcef1f41704c8622f592f2dbd1abd0bd1bad339bced9f08aa6e746feffffff0c5088ff7ec11d807f1b538a9ccb66108186e885f1d7ba0d1ff8ec17911b863b010000006a473044022062c12be5f75a0e057d72fa23ae2b8375e778ae6e12ef3a524268aa958310abae0220628db546215a417541c21a1b80718f2dc050013fa87818b49e85673d87f6538c0121020af39d1d7f01f2dbea8cc1a785602a3a31e096bb2e2d6cceba035655066a04bdfeffffff998d6ff853f6124a789fdae216ba94b73c63742f21cfdb89b067cf98037ed780010000006b483045022100d31503cce1c3d3bc8a722489c7aab4d18238f216062f8771a1299913d2149197022045dc6af29b2b80af9811e98158e5e41285732a313193c92e020cca7a56ab9c6601210330debbee6f037df2064467c85d7fdb76e98e9d5f8c13e2511588d8ddeed618ccfeffffff026cb32877a50100001976a9148ca7ee93f477f31939322b1303a0ab29039d2aa788ac919b8502000000001976a914492d5d7d6d5206857a84328fc52306797109d8b288ac3be70700',
+			details: [Object],
+			'bip125-replaceable': 'no',
+			timereceived: 1493745226,
+			time: 1493745226,
+			walletconflicts: [],
+			txid: '7ff921a7826d948081c0d7f6429a1e00eefa2034afca4df27d343ad5890bbe8a',
+			blocktime: 1493744202,
+			blockindex: 3,
+			blockhash: '98dfe982b069f2399500f4b83528a42577ae2a406753651c0374b6086fa07368',
+			confirmations: 7,
+			amount: 18101.80387692 },
+			amountSatoshi: 1810180387692,
+			lastUpdated: 2017-05-02T17:15:36.252Z,
+			created: 2017-05-02T17:15:36.252Z,
+			convertedOn: 2017-05-02T17:15:36.252Z,
+			conversionFee: 0,
+			__v: 0 }
+		*/
+
+		mLocal.collection("transactions").find({ "transactionID": "f658281b-c09f-4eef-9063-02e4ec62b328" }).toArray((err, txns) => {
+			console.log(txns)
+			mProd.collection("transactions").insertMany(txns, (err, res) => {
+				if (err) console.log(err)
+				console.log(res)
+			})
+		})
+
+	});
+});
